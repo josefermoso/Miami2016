@@ -3,26 +3,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="joesoft.miami2016.MainActivity"
+    tools:context=".view.MainActivity"
     android:background="#000000"
     >
 
-    <ImageView
+    <android.support.v4.view.ViewPager
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:src="@drawable/lalyyyo"
-        android:scaleType="centerCrop"
-        android:paddingTop="20dp"
-        android:paddingBottom="20dp"
-        />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Te extraño"
-        android:layout_gravity="bottom"
-        android:gravity="center"
-        android:textSize="30sp"
-        android:textColor="#FFFFFF"
-        />
+        android:id="@+id/mainActivityPictureviewPager"
+        >
+    </android.support.v4.view.ViewPager>
 </FrameLayout>
