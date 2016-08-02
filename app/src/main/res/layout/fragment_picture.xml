@@ -7,7 +7,7 @@
     tools:context="joesoft.miami2016.view.PictureFragment">
 
 
-    <ImageView
+    <com.flaviofaria.kenburnsview.KenBurnsView
         android:id="@+id/fragmentPictureImage"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
