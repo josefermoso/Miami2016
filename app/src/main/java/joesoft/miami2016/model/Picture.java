@@ -4,27 +4,27 @@ package joesoft.miami2016.model;
  * Created by joe on 7/30/16.
  */
 public class Picture {
-    private String textPicture;
-    private Integer idImage;
+    private Frace textPicture;
+    private ImageToShow idImage;
 
-    public Picture(String textPicture, Integer idImage) {
-
+    public Picture(Frace textPicture, ImageToShow idImage) {
         this.textPicture = textPicture;
         this.idImage = idImage;
     }
-    public String getTextPicture() {
+
+    public Frace getTextPicture() {
         return textPicture;
     }
 
-    public void setTextPicture(String textPicture) {
+    public void setTextPicture(Frace textPicture) {
         this.textPicture = textPicture;
     }
 
-    public Integer getIdImage() {
+    public ImageToShow getIdImage() {
         return idImage;
     }
 
-    public void setIdImage(Integer idImage) {
+    public void setIdImage(ImageToShow idImage) {
         this.idImage = idImage;
     }
 }

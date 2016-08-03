@@ -13,7 +13,7 @@
         android:layout_height="match_parent"
         android:paddingBottom="20dp"
         android:paddingTop="20dp"
-        android:scaleType="centerCrop" />
+        android:scaleType="fitCenter" />
 
     <TextView
         android:id="@+id/fragmentPictureText"

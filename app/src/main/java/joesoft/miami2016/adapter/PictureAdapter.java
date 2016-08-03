@@ -10,6 +10,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import joesoft.miami2016.controller.PictureController;
+import joesoft.miami2016.model.Frace;
+import joesoft.miami2016.model.ImageToShow;
 import joesoft.miami2016.model.Picture;
 import joesoft.miami2016.view.PictureFragment;
 
@@ -20,25 +23,35 @@ public class PictureAdapter extends FragmentStatePagerAdapter {
 
 
 
-    private List<PictureFragment> pictureList;
+    private List<Picture> pictureList;
+    private List<PictureFragment>pictureFragments;
 
-    public PictureAdapter(FragmentManager fm, List<Picture> pictures ) {
+    public PictureAdapter(FragmentManager fm) {
         super(fm);
 
         pictureList = new ArrayList<>();
-
-        for (Picture picture : pictures){
-               pictureList.add(PictureFragment.getNewPicture(picture));
-        }
+        pictureFragments = new ArrayList<>();
     }
 
     @Override
     public Fragment getItem(int position) {
-        return pictureList.get(position);
+        return  pictureFragments.get(position);
     }
 
     @Override
     public int getCount() {
-        return pictureList.size();
+        return pictureFragments.size();
+    }
+
+    public List<Picture> getPictureList() {
+        return pictureList;
+    }
+
+    public void setPictureList(List<Picture> pictureList) {
+        this.pictureList = pictureList;
+
+        for (int i = 0; i<pictureList.size();i++){
+            pictureFragments.add(PictureFragment.getNewPictureFragment(i));
+        }
     }
 }

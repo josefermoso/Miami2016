@@ -15,11 +15,20 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import joesoft.miami2016.DAO.FraceDAO;
 import joesoft.miami2016.R;
 import joesoft.miami2016.adapter.PictureAdapter;
+import joesoft.miami2016.controller.FraceController;
+import joesoft.miami2016.controller.ImageController;
+import joesoft.miami2016.controller.PictureController;
+import joesoft.miami2016.model.Frace;
+import joesoft.miami2016.model.ImageToShow;
 import joesoft.miami2016.model.Picture;
+import joesoft.miami2016.util.ResultListener;
 
 public class MainActivity extends AppCompatActivity {
+
+    PictureAdapter pictureAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,10 +41,8 @@ public class MainActivity extends AppCompatActivity {
         ViewPager viewPager = (ViewPager) findViewById(R.id.mainActivityPictureviewPager);
 
         List<Picture> pictureList = new ArrayList<>();
-        pictureList.add(new Picture("Te extranio", R.drawable.lalyyyo));
-        pictureList.add(new Picture("Te amo", R.drawable.lalyyyo2));
 
-        PictureAdapter pictureAdapter = new PictureAdapter(getSupportFragmentManager(), pictureList);
+        pictureAdapter = new PictureAdapter(getSupportFragmentManager());
         viewPager.setAdapter(pictureAdapter);
 
         viewPager.setPageTransformer(false, new ViewPager.PageTransformer() {
@@ -48,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
                     page.setAlpha(1);
 
                 } else if (position <= 1) { // [-1,1]
-                    ImageView imageView= (ImageView) page.findViewById(R.id.fragmentPictureImage);
+                    ImageView imageView = (ImageView) page.findViewById(R.id.fragmentPictureImage);
                     imageView.setTranslationX(-position * (pageWidth / 2)); //Half the normal speed
 
                 } else { // (1,+Infinity]
@@ -58,6 +65,15 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        final PictureController pictureController = PictureController.getInstante();
+        pictureController.getPictures(new ResultListener<List<Picture>>() {
+            @Override
+            public void finish(List<Picture> resultado) {
+                pictureAdapter.setPictureList(resultado);
+                pictureAdapter.notifyDataSetChanged();
+            }
+        });
     }
+
 }
 
